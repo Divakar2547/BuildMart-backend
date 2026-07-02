@@ -34,9 +34,23 @@ app.use('/api/orders', require('./routes/orderRoutes'));
 app.use('/api/payment', require('./routes/paymentRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 
+// Root route for Render / health checks
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'BuildMart API is running',
+    health: '/api/health'
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'BuildMart API is running', timestamp: new Date() });
+});
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: 'Route not found' });
 });
 
 // Error handler
