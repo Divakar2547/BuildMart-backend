@@ -34,7 +34,8 @@ const cartSchema = new mongoose.Schema({
 
 cartSchema.methods.calculateTotal = function() {
   this.totalAmount = this.items.reduce((total, item) => {
-    return total + (item.price * item.quantity);
+    const price = item.price || (item.product && item.product.price) || 0;
+    return total + (price * item.quantity);
   }, 0);
 };
 

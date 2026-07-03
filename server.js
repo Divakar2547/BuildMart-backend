@@ -13,8 +13,6 @@ app.use(cors({
     const allowed = [
       'http://localhost:3000',
       'http://localhost:5173',
-      'https://buildmart-backend-5x3k.onrender.com',
-      'https://divakar2547.github.io',
       process.env.FRONTEND_URL,
     ].filter(Boolean);
     if (!origin || allowed.includes(origin) || origin.endsWith('.render.com') || origin.endsWith('.vercel.app') || origin.endsWith('.netlify.app')) {
@@ -36,23 +34,9 @@ app.use('/api/orders', require('./routes/orderRoutes'));
 app.use('/api/payment', require('./routes/paymentRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 
-// Root route for Render / health checks
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: 'BuildMart API is running',
-    health: '/api/health'
-  });
-});
-
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'BuildMart API is running', timestamp: new Date() });
-});
-
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({ success: false, message: 'Route not found' });
 });
 
 // Error handler
@@ -68,29 +52,9 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/buildmart';
 
-const ensureDefaultUser = async () => {
-  try {
-    const User = require('./models/User');
-    const adminExists = await User.findOne({ email: 'admin@buildmart.com' });
-    if (!adminExists) {
-      await User.create({
-        name: 'Admin User',
-        email: 'admin@buildmart.com',
-        password: 'admin123',
-        role: 'admin',
-        phone: '9876543210'
-      });
-      console.log('✅ Created default admin user: admin@buildmart.com / admin123');
-    }
-  } catch (error) {
-    console.error('⚠️ Could not create default admin user:', error.message);
-  }
-};
-
 mongoose.connect(MONGODB_URI)
-  .then(async () => {
+  .then(() => {
     console.log('✅ MongoDB connected successfully');
-    await ensureDefaultUser();
     app.listen(PORT, () => {
       console.log(`🚀 BuildMart server running on port ${PORT}`);
     });

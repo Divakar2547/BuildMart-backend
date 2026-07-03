@@ -32,9 +32,9 @@ exports.addToCart = async (req, res) => {
     const existingItem = cart.items.find(item => item.product.toString() === productId);
     if (existingItem) {
       existingItem.quantity += quantity;
-      existingItem.price = product.price;
+      existingItem.price = product.price || 0;
     } else {
-      cart.items.push({ product: productId, quantity, price: product.price });
+      cart.items.push({ product: productId, quantity, price: product.price || 0 });
     }
 
     cart.calculateTotal();

@@ -50,12 +50,13 @@ exports.getAllUsers = async (req, res) => {
 
 exports.seedProducts = async (req, res) => {
   try {
+    // Prices updated to 2024 Tamil Nadu market rates
     const sampleProducts = [
       {
         name: 'UltraTech Cement OPC 53 Grade',
         description: 'Premium quality Ordinary Portland Cement for high-strength concrete structures. Ideal for RCC work, bridges, flyovers and industrial construction.',
-        price: 380,
-        originalPrice: 420,
+        price: 395,
+        originalPrice: 430,
         category: 'Cement',
         brand: 'UltraTech',
         stock: 500,
@@ -69,8 +70,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'ACC Gold Water Shield Cement',
         description: 'Water-resistant cement with advanced additives. Perfect for foundations, basements, and water tanks. Provides excellent waterproofing.',
-        price: 410,
-        originalPrice: 450,
+        price: 420,
+        originalPrice: 460,
         category: 'Cement',
         brand: 'ACC',
         stock: 300,
@@ -84,8 +85,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'TMT Steel Bar Fe-500D',
         description: 'High-strength TMT (Thermo-Mechanically Treated) steel bars for RCC construction. Superior ductility and weldability. Corrosion resistant.',
-        price: 58000,
-        originalPrice: 62000,
+        price: 62000,
+        originalPrice: 67000,
         category: 'Steel',
         brand: 'TATA Steel',
         stock: 50,
@@ -93,13 +94,14 @@ exports.seedProducts = async (req, res) => {
         rating: 4.7,
         numReviews: 156,
         featured: true,
-        images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', alt: 'TMT Steel' }],
+        images: [{ url: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=400', alt: 'TMT Steel' }],
         specifications: [{ key: 'Grade', value: 'Fe-500D' }, { key: 'Standard', value: 'IS 1786' }]
       },
       {
         name: 'SAIL TMT Steel Bar 12mm',
         description: 'SAIL (Steel Authority of India) TMT bars with high tensile strength. Ideal for construction of multi-storey buildings and bridges.',
-        price: 56000,
+        price: 60500,
+        originalPrice: 64000,
         category: 'Steel',
         brand: 'SAIL',
         stock: 75,
@@ -107,14 +109,14 @@ exports.seedProducts = async (req, res) => {
         rating: 4.5,
         numReviews: 98,
         featured: false,
-        images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', alt: 'SAIL Steel' }],
+        images: [{ url: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=400', alt: 'SAIL Steel' }],
         specifications: [{ key: 'Diameter', value: '12mm' }, { key: 'Grade', value: 'Fe-500' }]
       },
       {
         name: 'Professional Concrete Mixer',
         description: 'Heavy-duty electric concrete mixer with 350L drum capacity. Suitable for large construction sites. Durable steel drum with anti-rust coating.',
-        price: 45000,
-        originalPrice: 52000,
+        price: 48500,
+        originalPrice: 55000,
         category: 'Tools',
         brand: 'Bosch',
         stock: 15,
@@ -128,8 +130,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'Heavy Duty Drilling Machine',
         description: 'Professional rotary hammer drill with SDS-plus chuck. Suitable for drilling in concrete, brick and masonry. Variable speed control.',
-        price: 8500,
-        originalPrice: 9800,
+        price: 9200,
+        originalPrice: 10500,
         category: 'Tools',
         brand: 'Bosch',
         stock: 30,
@@ -143,7 +145,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'M-Sand (Manufactured Sand)',
         description: 'High-quality manufactured sand as a substitute for river sand. Consistent gradation, free from impurities. Ideal for plastering and concrete work.',
-        price: 1200,
+        price: 1450,
+        originalPrice: 1600,
         category: 'Sand & Aggregate',
         brand: 'BuildMart',
         stock: 1000,
@@ -157,8 +160,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'Red Clay Bricks',
         description: 'Premium quality first-class red clay bricks. High compressive strength, uniform size and color. Perfect for all masonry and construction work.',
-        price: 8,
-        originalPrice: 10,
+        price: 9,
+        originalPrice: 11,
         category: 'Bricks',
         brand: 'BuildMart',
         stock: 50000,
@@ -166,13 +169,14 @@ exports.seedProducts = async (req, res) => {
         rating: 4.3,
         numReviews: 203,
         featured: false,
-        images: [{ url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400', alt: 'Clay Bricks' }],
+        images: [{ url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400', alt: 'Clay Bricks' }],
         specifications: [{ key: 'Size', value: '230x115x76mm' }, { key: 'Strength', value: '>10 MPa' }]
       },
       {
         name: 'UPVC Plumbing Pipe 4 inch',
         description: 'High-quality UPVC pipes for plumbing and sewage systems. UV resistant, lightweight and durable. Easy to install with solvent cement.',
-        price: 450,
+        price: 520,
+        originalPrice: 580,
         category: 'Pipes & Fittings',
         brand: 'Finolex',
         stock: 200,
@@ -186,8 +190,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'Asian Paints Apex Exterior',
         description: 'Premium exterior emulsion paint with advanced weatherproof technology. Protects from rain, UV rays and algae. Available in 1500+ shades.',
-        price: 2800,
-        originalPrice: 3200,
+        price: 3150,
+        originalPrice: 3600,
         category: 'Paint',
         brand: 'Asian Paints',
         stock: 100,
@@ -195,14 +199,14 @@ exports.seedProducts = async (req, res) => {
         rating: 4.6,
         numReviews: 312,
         featured: true,
-        images: [{ url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', alt: 'Asian Paints' }],
+        images: [{ url: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400', alt: 'Asian Paints' }],
         specifications: [{ key: 'Volume', value: '20L bucket' }, { key: 'Coverage', value: '120-140 sq.ft/L' }]
       },
       {
         name: 'Angle Grinder 4.5 inch',
         description: 'Professional angle grinder for cutting, grinding and polishing. Powerful motor with anti-vibration handle. Safety guard included.',
-        price: 3200,
-        originalPrice: 3800,
+        price: 3800,
+        originalPrice: 4400,
         category: 'Tools',
         brand: 'Makita',
         stock: 45,
@@ -216,7 +220,8 @@ exports.seedProducts = async (req, res) => {
       {
         name: 'Ambuja Plus Cement PPC',
         description: 'Portland Pozzolana Cement with fly ash for energy-efficient construction. Provides better workability and reduces heat of hydration.',
-        price: 370,
+        price: 385,
+        originalPrice: 415,
         category: 'Cement',
         brand: 'Ambuja',
         stock: 400,

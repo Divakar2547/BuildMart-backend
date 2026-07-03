@@ -28,7 +28,7 @@ exports.getProducts = async (req, res) => {
 
     const skip = (Number(page) - 1) * Number(limit);
     const [products, total] = await Promise.all([
-      Product.find(query).sort(sortObj).skip(skip).limit(Number(limit)).exec(),
+      Product.find(query).sort(sortObj).skip(skip).limit(Number(limit)),
       Product.countDocuments(query)
     ]);
 
