@@ -52,7 +52,14 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/buildmart';
 
-mongoose.connect(MONGODB_URI)
+// Connect with recommended options
+mongoose.connect(MONGODB_URI, {
+  // useNewUrlParser and useUnifiedTopology are defaults in mongoose >=6,
+  // options kept for clarity and backwards compatibility
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000
+})
   .then(() => {
     console.log('✅ MongoDB connected successfully');
     app.listen(PORT, () => {
@@ -61,6 +68,7 @@ mongoose.connect(MONGODB_URI)
   })
   .catch(err => {
     console.error('❌ MongoDB connection error:', err.message);
+    console.error('Connection string used:', MONGODB_URI && MONGODB_URI.replace(/:.+@/, ':*****@'));
     process.exit(1);
   });
 
